@@ -24,3 +24,13 @@ def forEachFileMP(callback, pathlist, filter = '*.*'):
 
     with Pool(multiprocessing.cpu_count()) as p:
         return p.map(callback, files)
+    
+def forEachGetFiles(pathlist, filter = '*.*'):
+    if not isinstance(pathlist, (list, tuple)):
+        pathlist = [pathlist]
+
+    files = []
+    for p in pathlist:
+        files.extend(getDirectoryFiles(p, filter)) if os.path.isdir(p) else files.append(p)
+        
+    return files  
