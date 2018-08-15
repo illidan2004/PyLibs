@@ -34,4 +34,3 @@ def forEachGetFiles(pathlist, filter = '*.*'):
         files.extend(getDirectoryFiles(p, filter)) if os.path.isdir(p) else files.append(p)
         
     return files  
-
